@@ -1,3 +1,4 @@
+
 #include "TXLib.h"
 #include <string>
 
@@ -8,10 +9,10 @@ int main()
     int y = 600;
 
     txCreateWindow(x, y);
-    HDC a = txLoadImage("a.bmp");
-    HDC b = txLoadImage("b.bmp");
-    HDC c = txLoadImage("c.bmp");
-    HDC v = txLoadImage("v.bmp");
+    HDC car1 = txLoadImage("car1.bmp");
+    HDC car2 = txLoadImage("car2.bmp");
+    HDC car3 = txLoadImage("car3.bmp");
+    HDC SpoilerToGOT = txLoadImage("SpoilerToGOT.bmp");
     HDC door = txLoadImage("door.bmp");
     HDC Reddoor = txLoadImage("Reddoor.bmp");
     HDC Whitedoor = txLoadImage("Whitedoor.bmp");
