@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::string ps;
+    char tmp[20];
     int x = 1300;
     int y = 600;
 
@@ -12,38 +12,43 @@ int main()
     HDC b = txLoadImage("b.bmp");
     HDC c = txLoadImage("c.bmp");
     HDC v = txLoadImage("v.bmp");
+    HDC door = txLoadImage("door.bmp");
+    HDC Reddoor = txLoadImage("Reddoor.bmp");
+    HDC Whitedoor = txLoadImage("Whitedoor.bmp");
 
 
 
-    std::cout << "1-McLaren P1\n2-Ferrari Enzo\n3-Gazel Next" << std::endl;
-    std::cin >> ps;
-    int p = std::atoi(ps);
+    std::cout << "1-McLaren P1\n2-Ferrari Enzo\n3-Gazel Next\n" << std::endl;
+    std::cin >> tmp;
+    int autom = std::atoi(tmp);
 
-    if (p == 1) {
+    std::cout << "1-Spoiler\n2-No spoiler\n" << std::endl;
+    std::cin >> tmp;
+    int spoiler = std::atoi(tmp);
+
+    if (autom == 3 && spoiler == 1)
+    {
+        std::cout << "Error spoiler on Gazel\n" << std::endl;
+        return(0);
+    }
+
+    if (autom == 1) {
         txBitBlt(txDC(), 0, 0, x, y, a, 0, 0);
-        txBitBlt(txDC(), 0, 60, 400, 160, v, 0, 0);
+        if (spoiler == 1)
+        {
+            txBitBlt(txDC(), 0, 60, 400, 160, v, 0, 0);
+        }
     }
-    if (p == 2) {
+    if (autom == 2) {
         txBitBlt(txDC(), 0, 0, x, y, b, 0, 0);
-        txBitBlt(txDC(), 0, 70, 400, 170, v, 0, 0);
+        if (spoiler == 1)
+        {
+            txBitBlt(txDC(), 0, 70, 400, 170, v, 0, 0);
+        }
     }
 
-    if (p == 3) {
+    if (autom == 3) {
         txBitBlt(txDC(), 0, 0, x, y, c, 0, 0);
-        txBitBlt(txDC(), 50, 30, 450, 130, v, 0, 0);
-    }
-    if (p == McLaren) {
-        txBitBlt(txDC(), 0, 0, x, y, a, 0, 0);
-        txBitBlt(txDC(), 0, 60, 400, 160, v, 0, 0);
-    }
-    if (p == Ferrari) {
-        txBitBlt(txDC(), 0, 0, x, y, b, 0, 0);
-        txBitBlt(txDC(), 0, 70, 400, 170, v, 0, 0);
-    }
-
-    if (p == Gazel Next) {
-        txBitBlt(txDC(), 0, 0, x, y, c, 0, 0);
-        txBitBlt(txDC(), 50, 30, 450, 130, v, 0, 0);
     }
 
     txDeleteDC(a);
